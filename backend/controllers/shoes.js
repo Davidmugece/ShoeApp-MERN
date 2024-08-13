@@ -15,6 +15,25 @@ const addShoe = async (req, res) => {
     }
 };
 
+const addManyShoes = async (req, res) => {
+    const shoes = req.body; // Expecting an array of shoe objects
+
+    try {
+        // Validate that req.body is an array
+        if (!Array.isArray(shoes)) {
+            return res.status(400).json({ msg: 'Invalid data format' });
+        }
+
+        // Create multiple shoe instances and save them
+        const newShoes = await Shoe.insertMany(shoes);
+
+        res.json(newShoes);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
+};
+
 const getShoeById = async (req, res) => {
 
     try {
@@ -76,6 +95,7 @@ const viewShoes = async (req, res) => {
 
 module.exports = {
     addShoe,
+    addManyShoes,
     getShoeById,
     editShoe,
     deleteShoe,
