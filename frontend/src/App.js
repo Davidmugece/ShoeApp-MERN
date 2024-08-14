@@ -1,4 +1,5 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -9,6 +10,8 @@ import About from './pages/About';
 import Shop from './pages/Shop';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import AdminPage from './pages/AdminPage';
+import ShoeProduct from './pages/ShoeProduct';
 import './style.css';
 
 const App = () => {
@@ -29,6 +32,8 @@ const App = () => {
                                     <Route path="/checkout" element={<Checkout />} />
                                     <Route path="/about" element={<About />} />
                                     <Route path="/shop" element={<Shop />} />
+                                    <Route path="/admin" element={<AdminPage />} />
+                                    <Route path="/shoe/:shoeId" element={<ShoeProduct />} />
                                 </Routes>
                                 <Footer />
                             </>

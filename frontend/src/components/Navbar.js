@@ -35,7 +35,7 @@ const Navbar = () => {
                     </ul>
 
                     <ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-                        <li><Link className="nav-link" to="#"><img src="images/user.svg" alt="User"/></Link></li>
+                        <li><Link className="nav-link" to="/Login"><img src="images/user.svg" alt="User"/></Link></li>
                         <li><Link className="nav-link" to="/cart"><img src="images/cart.svg" alt="Cart"/></Link></li>
                     </ul>
                 </div>
