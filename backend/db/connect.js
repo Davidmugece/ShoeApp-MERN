@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const connectionString = "mongodb://localhost:27017/shosstoredb";
+const connectionString = "mongodb+srv://mugechedavid:1234@cluster0.j6e71.mongodb.net/shoedb?retryWrites=true&w=majority&appName=Cluster0";
 
 const connectDatabase = async () => {
     await mongoose
