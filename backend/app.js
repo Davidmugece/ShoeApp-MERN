@@ -33,7 +33,7 @@ const purchaseShoeRoutes = require("./routes/purchaseshoes");
 const contactRoutes = require("./routes/contact");
 const orderRoutes = require("./routes/orders");
 const SaleRoutes = require("./routes/sales");
-
+const adminshoes = require("./routes/adminshoes");
 
 //Base route(home page of the server)
 app.get('/', (req, res) => {
@@ -41,12 +41,13 @@ app.get('/', (req, res) => {
 });
 
 app.use("/auth", authRoutes);
-app.use("/shoes", verifyToken, shoeRoutes);
+app.use("/shoes",  shoeRoutes);
 app.use("/users", verifyToken, userRoutes);
-app.use("/purchaseshoes", verifyToken, purchaseShoeRoutes);
+app.use("/purchaseshoes", purchaseShoeRoutes);
 app.use("/contact",verifyToken, contactRoutes);
 app.use("/orders",verifyToken, orderRoutes); 
 app.use("/sales",verifyToken, SaleRoutes);
+app.use("/adminshoes",verifyToken, adminshoes);
 
 
 // start the server
