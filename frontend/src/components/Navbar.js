@@ -14,9 +14,7 @@ const Navbar = () => {
 
                 <div className="collapse navbar-collapse" id="navbarsFurni">
                     <ul className="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/">Home</Link>
-                        </li>
+                        
                         <li className="nav-item">
                             <Link className="nav-link active" to="/shop">Shop</Link>
                         </li>
@@ -35,8 +33,8 @@ const Navbar = () => {
                     </ul>
 
                     <ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-                        <li><Link className="nav-link" to="/Login"><img src="images/user.svg" alt="User"/></Link></li>
-                        <li><Link className="nav-link" to="/cart"><img src="images/cart.svg" alt="Cart"/></Link></li>
+                        <li><Link className="nav-link" to="/Login"><img src="https://themewagon.github.io/furni/images/user.svg" alt="User"/></Link></li>
+                        <li><Link className="nav-link" to="/cart"><img src="https://themewagon.github.io/furni/images/cart.svg" alt="Cart"/></Link></li>
                     </ul>
                 </div>
             </div>

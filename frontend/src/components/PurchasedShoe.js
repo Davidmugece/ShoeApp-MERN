@@ -1,13 +1,39 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Table } from 'react-bootstrap';
+import { BASE_URL } from '../utils/config';
 
 const PurchasedShoe = () => {
+    const [purchases, setPurchases] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(`${BASE_URL}/purchaseshoes`);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                setPurchases(data);
+            } catch (error) {
+                setError(error.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error}</p>;
+
     return (
         <div className="flex-fill">
             <Table striped bordered hover responsive>
                 <thead>
                     <tr>
-                        <th>Customer ID</th>
                         <th>Type</th>
                         <th>Quantity</th>
                         <th>Price</th>
@@ -15,15 +41,14 @@ const PurchasedShoe = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {/* Example rows */}
-                    <tr>
-                        <td>12345</td>
-                        <td>Sneakers</td>
-                        <td>2</td>
-                        <td>$200</td>
-                        <td>2024-08-14</td>
-                    </tr>
-                    {/* Additional rows can be added here */}
+                   
+                        <tr>
+                            <td>NIKE</td>
+                            <td>345</td>
+                            <td>67</td>
+                            <td>908</td>
+                        </tr>
+                 
                 </tbody>
             </Table>
         </div>

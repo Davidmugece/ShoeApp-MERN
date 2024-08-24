@@ -4,16 +4,14 @@ const Footer = () => {
     return (
         <footer className="footer-section">
             <div className="container relative">
-                <div className="sofa-img">
-                    <img src="images/sofa.png" alt="Sofa" className="img-fluid" />
-                </div>
+               
 
                 <div className="row">
                     <div className="col-lg-8">
                         <div className="subscription-form">
                             <h3 className="d-flex align-items-center">
                                 <span className="me-1">
-                                    <img src="images/envelope-outline.svg" alt="Envelope" className="img-fluid" />
+                                    <img src="https://themewagon.github.io/furni/images/envelope-outline.svg" alt="Envelope" className="img-fluid" />
                                 </span>
                                 <span>Subscribe to Newsletter</span>
                             </h3>

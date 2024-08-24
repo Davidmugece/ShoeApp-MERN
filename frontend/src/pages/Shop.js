@@ -1,90 +1,57 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import {BASE_URL} from '../utils/config';
 
 const Shop = () => {
-    return (
-        <>
-            <div className="hero">
-                <div className="container">
-                    <div className="row justify-content-between">
-                        <div className="col-lg-5">
-                            <div className="intro-excerpt">
-                                <h1>Shop</h1>
-                            </div>
-                        </div>
-                        <div className="col-lg-7">
-                            {/* Additional content can go here */}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {/* End Hero Section */}
+  const [products, setProducts] = useState([]);
 
-            <div className="untree_co-section product-section before-footer-section">
-                <div className="container">
-                    <div className="row">
+  useEffect(() => {
+    // Fetch product data from the backend API
+    fetch(`${BASE_URL}/shoes`)
+      .then(response => response.json())
+      .then(data => setProducts(data))
+      .catch(error => console.error('Error fetching products:', error));
+  }, []);
 
-                        {/* Start Column 1 */}
-                        <div className="col-12 col-md-4 col-lg-3 mb-5">
-                            <a className="product-item" href="#">
-                                <img src="images/product-3.png" className="img-fluid product-thumbnail" alt="Nordic Chair" />
-                                <h3 className="product-title">Nordic Chair</h3>
-                                <strong className="product-price">$50.00</strong>
-
-                                <span className="icon-cross">
-                                    <img src="images/cross.svg" className="img-fluid" alt="Cross icon" />
-                                </span>
-                            </a>
-                        </div>
-                        {/* End Column 1 */}
-                        
-                        {/* Start Column 2 */}
-                        <div className="col-12 col-md-4 col-lg-3 mb-5">
-                            <a className="product-item" href="#">
-                                <img src="images/product-1.png" className="img-fluid product-thumbnail" alt="Nordic Chair" />
-                                <h3 className="product-title">Nordic Chair</h3>
-                                <strong className="product-price">$50.00</strong>
-
-                                <span className="icon-cross">
-                                    <img src="images/cross.svg" className="img-fluid" alt="Cross icon" />
-                                </span>
-                            </a>
-                        </div>
-                        {/* End Column 2 */}
-
-                        {/* Start Column 3 */}
-                        <div className="col-12 col-md-4 col-lg-3 mb-5">
-                            <a className="product-item" href="#">
-                                <img src="images/product-2.png" className="img-fluid product-thumbnail" alt="Kruzo Aero Chair" />
-                                <h3 className="product-title">Kruzo Aero Chair</h3>
-                                <strong className="product-price">$78.00</strong>
-
-                                <span className="icon-cross">
-                                    <img src="images/cross.svg" className="img-fluid" alt="Cross icon" />
-                                </span>
-                            </a>
-                        </div>
-                        {/* End Column 3 */}
-
-                        {/* Start Column 4 */}
-                        <div className="col-12 col-md-4 col-lg-3 mb-5">
-                            <a className="product-item" href="#">
-                                <img src="images/product-3.png" className="img-fluid product-thumbnail" alt="Ergonomic Chair" />
-                                <h3 className="product-title">Ergonomic Chair</h3>
-                                <strong className="product-price">$43.00</strong>
-                                <p className="product-stock">Available Stock: <span>15</span></p> {/* Add stock information here */}
-                                <span className="icon-cross">
-                                    <img src="images/cross.svg" className="img-fluid" alt="Cross icon" />
-                                </span>
-                            </a>
-                        </div>
-                        {/* End Column 4 */}
-
-                    </div>
-                </div>
-            </div>
-        </>
-    );
+  return (
+    <div className="untree_co-section product-section before-footer-section">
+      <div className="container">
+        <div className="row">
+          {products.length > 0 ? (
+            products.map((product) => (
+              <div key={product._id} className="col-12 col-md-4 col-lg-3 mb-5">
+                {/* Link to ShoeProduct page with dynamic product ID */}
+                <Link className="product-item" to={`/shoe/${product._id}`}>
+            <img
+              src={`${BASE_URL}/images/${product.image}` }
+              className="img-fluid product-thumbnail"
+              alt={product.title}
+            />
+            <h3 className="product-title">{product.type}</h3>
+            <strong className="product-price">${product.price}</strong>
+            <p className="product-stock">
+              Available Stock: <span>{product.quantity}</span>
+            </p>
+            <span className="icon-cross">
+              <img
+                src="https://themewagon.github.io/furni/images/cross.svg"
+                className="img-fluid"
+                alt="Cross icon"
+              />
+            </span>
+          </Link>
+              </div>
+            ))
+          ) : (
+            <p>Loading products...</p>
+          )}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Shop;
+
+
 

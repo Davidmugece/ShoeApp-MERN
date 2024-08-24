@@ -33,7 +33,7 @@ const App = () => {
                                     <Route path="/about" element={<About />} />
                                     <Route path="/shop" element={<Shop />} />
                                     <Route path="/admin" element={<AdminPage />} />
-                                    <Route path="/shoe/:shoeId" element={<ShoeProduct />} />
+                                    <Route path="/shoe/:id" element={<ShoeProduct />} />
                                 </Routes>
                                 <Footer />
                             </>
@@ -46,3 +46,5 @@ const App = () => {
 };
 
 export default App;
+
+
