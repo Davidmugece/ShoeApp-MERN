@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Modal, Button, Table, Form } from 'react-bootstrap';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import AuthContext from '../context/AuthContext';
+import { BASE_URL } from '../utils/config';
 
 const ItemList = () => {
     const [items, setItems] = useState([]);
@@ -19,7 +20,7 @@ const ItemList = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:3000/shoes', {
+                const response = await fetch(`${BASE_URL}/shoes`, {
                     headers: {
                         Authorization: `${token}`
                     }
@@ -67,7 +68,7 @@ const ItemList = () => {
         if (!selectedItem) return;
 
         try {
-            const response = await fetch(`http://localhost:3001/shoes/${selectedItem._id}`, {
+            const response = await fetch(`${BASE_URL}/shoes/${selectedItem._id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -91,7 +92,7 @@ const ItemList = () => {
     const handleDelete = async (_id) => {
         console.log('Deleting item:', _id);
         try {
-            const response = await fetch(`http://localhost:3000/adminshoes/${_id}`, {
+            const response = await fetch(`${BASE_URL}/adminshoes/${_id}`, {
                 method: 'DELETE',
                 headers: {
                     Authorization: `${token}`

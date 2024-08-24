@@ -25,7 +25,7 @@ const AddItem = () => {
         formData.append('image', image);
 
         try {
-            const response = await fetch('http://localhost:3000/adminshoes', {
+            const response = await fetch(`${BASE_URL}/adminshoes`, {
                 method: 'POST',
                 body: formData,
                 headers:({

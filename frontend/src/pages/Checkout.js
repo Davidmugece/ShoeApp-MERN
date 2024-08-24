@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import {BASE_URL} from '../utils/config';
 
 const Checkout = () => {
   const [cart, setCart] = useState([]);
@@ -14,7 +15,7 @@ const Checkout = () => {
 
   const handlePlaceOrder = async () => {
     try {
-      const response = await fetch('http://localhost:3000/purchaseshoes', {
+      const response = await fetch(`${BASE_URL}/purchaseshoes`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
